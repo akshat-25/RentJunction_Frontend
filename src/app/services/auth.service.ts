@@ -14,6 +14,9 @@ export class AuthService {
   user = this.userSubject.subscribe();
   router: Router = inject(Router);
   cookieService: CookieService = inject(CookieService);
+  userId: number;
+  isAdminLoggedIn: boolean = false;
+  currentUser: string = '';
 
   userRegistration(data: Object) {
     return this.http.post('https://localhost:44375/api', data).pipe(
@@ -29,15 +32,17 @@ export class AuthService {
       catchError((err: HttpErrorResponse) => {
         return throwError(() => err.error.Message);
       }),
-      tap((res) => {
+      tap((res :any) => {
+        this.userId = res.id;
         this.userSubject.next(res);
-
       })
     );
   }
 
-
-
+  getUserId(id: number){
+    this.userId = id;
+    console.log(this.userId);
+  }
 
   logout(){
     this.userSubject.next(null);

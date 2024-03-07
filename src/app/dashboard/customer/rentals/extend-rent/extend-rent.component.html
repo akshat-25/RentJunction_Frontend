@@ -1,0 +1,91 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-6">
+      <img
+        src="https://img.freepik.com/free-vector/house-searching-landing-page-concept_23-2148298746.jpg?t=st=1709566801~exp=1709570401~hmac=25d62e764cbf860363c77bc70fb1d8c24f429e289e0f1d2e4678e7b9ac49fec6&w=740"
+        alt="Product Image"
+        class="img-fluid border"
+      />
+    </div>
+    <div class="col-md-6 custom">
+      <!-- <h1 class="text-primary">{{ product.name }}</h1> -->
+      <p class="fs-4">
+        Product ID:
+        <span class="font-weight-normal text-primary">{{ product.id }}</span>
+      </p>
+      <p class="fs-4">
+        Rent: ₹
+        <span class="font-weight-normal text-primary"
+          >{{ rent }} per day</span
+        >
+      </p>
+      <!-- <p class="fs-4">
+        City:
+        <span class="font-weight-normal text-primary">{{ product.city }}</span>
+      </p>
+      <p class="fs-4">
+        Description:
+        <span class="font-weight-normal text-primary">{{
+          product.description
+        }}</span>
+      </p> -->
+
+      <form>
+        <div class="form-group">
+          <label for="startDate" class="font-weight-normal fs-4"
+            >Start Date:</label
+          >
+          <div class="form-control">
+            {{ product.startDate }}
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="startDate" class="font-weight-normal fs-4"
+            >End Date:</label
+          >
+          <div class="form-control">
+            {{ product.endDate }}
+          </div>
+        </div>
+        <div class="form-group custom">
+          <label for="endDate" class="font-weight-normal fs-4"
+            >New End Date:</label
+          >
+          <input
+            type="date"
+            class="form-control"
+            id="endDate"
+            name="endDate"
+            required
+            [(ngModel)]="newEndDate"
+          />
+        </div>
+        <div class="btn btn-primary my-5" (click)="showDialog()">
+          Extend Rent Now
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<p-dialog
+  header="Proceed to payment"
+  [(visible)]="visible"
+  [modal]="true"
+  [style]="{ width: '50vw' }"
+  [draggable]="false"
+  [resizable]="false"
+>
+  <p class="m-0 fs-4">
+    Total no of days :
+    <span class="text-primary fw-bold">{{ totalDays - 1 }}</span>
+  </p>
+  <p class="m-0 fs-4">
+    Total Rent : 
+    <span class="fw-bold text-primary">₹ {{rent * (totalDays - 1)}}</span>
+  </p>
+  <p class="m-0 fs-4">Click Confirm to redirect to payment page.</p>
+  <button type="submit" class="btn btn-primary my-2" (click)="onFormSubmit()">
+    Confirm
+  </button>
+</p-dialog>

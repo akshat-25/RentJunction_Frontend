@@ -1,0 +1,33 @@
+
+<div class="product-form">
+    <h1 class="h1">Edit the field you want to update</h1>
+    <p-card styleClass="p-shadow-2" [style]="{ 'width': '50%', 'margin': 'auto' }">
+      <form #updateProduct="ngForm" (ngSubmit)="onUpdate(updateProduct)">
+        <div class="field">
+          <label for="name">Product Name</label>
+          <input pInputText type="text" class="full-width" placeholder="Product Name" name="productName" [(ngModel)]="product.name"/>
+        </div>
+        <div class="field">
+          <label for="rent">Rent (per day)</label>
+          <input pInputText pKeyFilter="int" class="full-width" placeholder="Rent" name="productRent" [(ngModel)]="product.rent"/>
+        </div>
+        <div class="field">
+            <label for="cityId">City</label>
+            <select class="form-select" id="cityId" name="productCity" required [(ngModel)] = "product.city">
+                <option *ngFor="let city of cities" [value]="city.name">{{ city.name }}</option>
+            </select>
+        </div>
+          <div class="field">
+            <label for="categoryId">Category</label>
+            <select class="form-select" id="categoryId" name="categoryId" required [(ngModel)]= "product.categoryId">
+                <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
+            </select>
+        </div>
+        <div class="field">
+          <label for="description">Description</label>
+          <textarea rows="5" cols="30" pInputTextarea class="full-width" name="productDesc" [(ngModel)]="product.description"></textarea>
+        </div>
+        <button type="submit" pButton label="Update Product" class="btn btn-primary"></button>
+      </form>
+    </p-card>
+  </div>

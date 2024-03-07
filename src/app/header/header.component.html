@@ -1,14 +1,28 @@
-<div class="app-header">
-    <!--APP LOGO-->
+<!-- <div class="app-header">
     <div class="app-header-logo">
-        <h2>Rent Junction</h2>
+       
     </div>
 
-    <!--APP NAVBAR-->
-    <div class="app-header-navbar">
-        <a routerLink="/">HOME</a>
-        <a routerLink="/dashboard" *ngIf="isLoggedIn">DASHBOARD</a>
-        <a routerLink="/login" *ngIf="!isLoggedIn">LOGIN</a>
-        <a type="button" *ngIf="isLoggedIn" (click)="logout()">LOGOUT</a>
+
+        <a routerLink="/" class="btn btn-outline-primary">HOME</a>
+        <a type="button" (click)="navigateDashboard()" *ngIf="isLoggedIn"class="btn btn-outline-primary">DASHBOARD</a>
+        <a routerLink="/login" *ngIf="!isLoggedIn" class="btn btn-outline-primary">LOGIN</a>
+        <a type="button" *ngIf="isLoggedIn" (click)="logout()" class="border" class="btn btn-outline-primary">LOGOUT</a>
+
+</div> -->
+<nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary">
+    <div class="container">
+        <a class="navbar-brand me-2">
+            <h2>Rent Junction</h2>
+        </a>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarButtonsExample">
+            <div>
+                <button class="btn btn-outline-primary me-3" (click)="navigateDashboard()" *ngIf="isLoggedIn">Dashboard</button>
+                <button data-mdb-ripple-init type="button" class="btn btn-outline-primary me-3" *ngIf="!isLoggedIn" routerLink="/login">Login</button>
+                <button data-mdb-ripple-init type="button" class="btn btn-outline-primary me-3" routerLink="/">Home</button>
+                <button data-mdb-ripple-init type="button" class="btn btn-outline-primary me-3" *ngIf="isLoggedIn" (click)="logout()">Logout</button>
+            </div>
+        </div>
     </div>
-</div>
+</nav>
+

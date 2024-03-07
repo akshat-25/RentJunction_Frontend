@@ -1,4 +1,4 @@
-
+<p-toast></p-toast>
 <app-snack-bar [errorMessage]="errorMessage" *ngIf="errorMessage">
 </app-snack-bar>
   <section class="vh-200" style="background-color: #ffffff">
@@ -10,7 +10,7 @@
               <div class="row justify-content-center">
                 <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
                   <p class="text-center h1 mb-5 mx-1 mx-md-4 mt-4">
-                    Sign up
+                    {{ isAdminLoggedIn ? "Add new Admin" : "Sign Up"}}
                   </p>
                   <app-loader *ngIf="isLoading"></app-loader>
                   <form class="mx-1 mx-md-4"
@@ -108,9 +108,9 @@
                         <label for="form3Example4cd">Password</label>
                       </div>
                     </div>
-                    <h6 class="mb-0 me-4">Role:</h6>
+                    <h6 class="mb-0 me-4" *ngIf="!isAdminLoggedIn">Role:</h6>
   
-                    <div class="mb-3">
+                    <div class="mb-3" *ngIf="!isAdminLoggedIn">
                       <div class="form-check form-check-inline me-4">
                         <input
                           class="form-check-input"
@@ -124,7 +124,7 @@
                         <label class="form-check-label" for="customerOption">Customer</label>
                       </div>
   
-                      <div class="form-check form-check-inline me-4">
+                      <div class="form-check form-check-inline me-4" *ngIf="!isAdminLoggedIn">
                         <input
                           class="form-check-input"
                           type="radio"
@@ -140,11 +140,11 @@
   
                     <div class="d-grid gap-2">
                       <button type="submit" class="btn btn-primary btn-lg mt-2" [disabled]="authForm.invalid">
-                        Register
+                        {{isAdminLoggedIn ? "Add Admin" : "Register"}}
                       </button>
                     </div>
 
-                    <div class="text-center">
+                    <div class="text-center" *ngIf="!isAdminLoggedIn">
                         
                         <p class="mt-5">Already have an account? <span role="button" class="text-primary cursor-pointer" routerLink="/login" >Login Here</span></p>
                       </div>

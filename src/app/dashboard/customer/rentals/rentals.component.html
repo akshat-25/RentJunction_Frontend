@@ -1,0 +1,33 @@
+<p-confirmDialog></p-confirmDialog>
+<p-toast></p-toast>
+<p-table [value]="products" [tableStyle]="{'min-width': '60rem', 'padding': '10px'}" class="">
+    <ng-template pTemplate="caption">
+        <div class="flex align-items-center justify-content-between">
+            Products
+        </div>
+    </ng-template>
+    <ng-template pTemplate="header" >
+        <tr class="border border-secondary">
+            <th>Rental Id</th>
+            <th>Product Id</th>
+            <th>Image</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Total Rent</th>
+            <th>Action</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-product >
+        <tr class="border border-secondary">
+            <td>{{product.id}}</td>
+            <td>{{product.productId}}</td>
+            <td><img [src]="'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRt3A3b2e6Y1booIDdTFTHPlXziPUv5iEM1ZQ&s' + product.image" [alt]="product.name" width="100" class="shadow-4" /></td>
+            <td>{{product.startDate}}</td>
+            <td>{{product.endDate}}</td>
+            <td>₹ {{product.price}}</td>
+            <td>
+                 <button (click)="extendRent(product.id,product)" class="btn btn-primary mx-2">Extend Rent Period</button>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>

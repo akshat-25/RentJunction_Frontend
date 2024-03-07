@@ -10,6 +10,12 @@ import { InputTextModule } from 'primeng/inputtext';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { AuthInterceptor } from './services/auth-interceptor.service';
+import { ConfirmationService } from 'primeng/api';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DataViewModule } from 'primeng/dataview';
+import { APP_BASE_HREF } from "@angular/common";
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
+
 
 @NgModule({
   declarations: [
@@ -23,15 +29,20 @@ import { AuthInterceptor } from './services/auth-interceptor.service';
     LoaderComponent,
     SnackBarComponent,
     FormsModule,
+    BrowserAnimationsModule,
     HttpClientModule,
-    InputTextModule
+    ProgressSpinnerModule,
+    InputTextModule,
+    DataViewModule,
   ],
   providers: [
+    ConfirmationService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true
-    }
+    },
+    { provide: APP_BASE_HREF, useValue: '/' },
   ],
   bootstrap: [AppComponent]
 })

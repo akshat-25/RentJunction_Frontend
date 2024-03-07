@@ -8,10 +8,8 @@ import { Router } from '@angular/router';
   templateUrl: './owner.component.html',
   styleUrl: './owner.component.css'
 })
-export class OwnerComponent implements OnInit{
+export class OwnerComponent{
   authService: AuthService = inject(AuthService);
-  productService: ProductService = inject(ProductService);
-  products: any = this.productService.products
   router: Router = inject(Router);
   options = [
     {
@@ -26,23 +24,25 @@ export class OwnerComponent implements OnInit{
       id: 2,
       header: 'View Products Owned by You',
       subheader: 'Your Collection, Your Earnings!',
-      image: 'https://media.istockphoto.com/id/1296846625/vector/delete-concept-tiny-woman-deleting-data-on-smartphone-move-unnecessary-files-to-the-trash.jpg?s=612x612&w=0&k=20&c=NJauIydcsykbzAtkt_tgJy-mVIk0KiKeIzv2W-hITUI=',
-      description: " From gadgets to fashion, this virtual showcase allows you to witness the value you've created. It's not just about ownership; it's about the satisfaction of turning every item into an opportunity. Dive into your collection today, where each piece tells a story of shared joy and growing earnings. Experience the fulfillment of maximizing the potential in your possessions!",
+      image: 'https://img.freepik.com/free-vector/consumer-demand-abstract-concept_335657-3109.jpg?t=st=1709479512~exp=1709480112~hmac=90cb7459a54cb3147fb8e574a55a7e9cd7f485eced8586791cce4a13004aeff6',
+      description: " From gadgets to fashion, this virtual showcase allows you to witness the value you've created. It's not just about ownership; it's about the satisfaction of turning every item into an opportunity. Dive into your collection today, where each piece tells a story of shared joy and growing earnings. ",
       labelButton: 'View Products'
     },
+    
   ]
-  ngOnInit() {
-   this.productService.getProductforOwner()
-  }
-   
+
 
   navigation(id: number){
-    console.log("In function")
-    if(id === 1){
-      // this.router.navigate(['dashboard/owner/view-products']);
-    }
-    else{
-      this.router.navigate(['dashboard/owner/view-products']);
+    switch (id) {
+      case 1:
+        this.router.navigate(['dashboard/owner/add-product']);
+        break;
+      case 2:
+        this.router.navigate(['dashboard/owner/view-products']);
+        break;
+     
+      default:
+        break;
     }
   }
   

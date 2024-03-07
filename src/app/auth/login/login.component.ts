@@ -22,13 +22,20 @@ export class LoginComponent {
     };
 
     this.authService.login(credentials).subscribe({
-      next: (userRoleId: number) => {
-        console.log(userRoleId)
+      next: (user: any) => {
+        this.authService.getUserId(user.userId);
+        console.log(user.roleId)
         this.isLoading = false;
-        if (userRoleId === 2) {
+        if (user.roleId === 2) {
+          this.authService.currentUser = 'customer'
           this.router.navigate(['/dashboard/customer']);
-        } else {
+        } else if(user.roleId === 3){
+          this.authService.currentUser = 'owner'
           this.router.navigate(['/dashboard/owner']);
+        }
+        else if(user.roleId === 1){
+          this.authService.currentUser = 'admin'
+          this.router.navigate(['/dashboard/admin']);
         }
       },
       error: (errMsg) => {

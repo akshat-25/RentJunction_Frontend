@@ -1,0 +1,14 @@
+<div class="categories-container" *ngIf="type==='categories'">
+    <div *ngFor="let category of categories" class="category-card" >
+      <img [src]="category.image" alt="{{category.name}}" (click)="onCategorySelect(category.id)" />
+      <div class="category-name">{{category.name}}</div>
+    </div>
+  </div>
+  
+<div class="categories-container" *ngIf="type === 'city'">
+    <div *ngFor="let city of cities" class="category-card" >
+      <img [src]="city.image" alt="{{city.name}}" (click)="onCitySelect(city.name)" />
+      <div class="category-name">{{city.name}}</div>
+    </div>
+  </div>
+  
