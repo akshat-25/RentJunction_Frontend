@@ -5,6 +5,8 @@ import { inject } from '@angular/core';
  
 export class AuthInterceptor implements HttpInterceptor {
   cookieService: CookieService = inject(CookieService);
+  
+
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     request = request.clone({

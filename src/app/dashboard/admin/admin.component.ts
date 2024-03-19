@@ -1,15 +1,24 @@
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { MessageService } from 'primeng/api';
+
 
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
-  styleUrl: './admin.component.css'
+  styleUrl: './admin.component.css',
+ 
 })
 export class AdminComponent {
   router: Router = inject(Router);
   authService: AuthService = inject(AuthService);
+  constructor(private messageService: MessageService) {
+    console.log("In admin constructor");
+    this.messageService.add({ severity: 'info', detail: 'Logged in Successfully!!' });
+
+  }
+
   ngOnInit() {
     this.authService.isAdminLoggedIn = true;
   }
@@ -36,7 +45,7 @@ export class AdminComponent {
     {
       id: 3,
       header: 'Add new Admin',
-      subheader: 'Add a new admin and manage them!',
+      subheader: 'Add a new admin and manage them easily!',
       image: 'https://img.freepik.com/free-vector/consumer-demand-abstract-concept_335657-3109.jpg?t=st=1709479512~exp=1709480112~hmac=90cb7459a54cb3147fb8e574a55a7e9cd7f485eced8586791cce4a13004aeff6',
       description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. A sapiente pariatur impedit qui, totam magni quia eius ipsam maxime deserunt dolor laboriosam quo hic reprehenderit suscipit commodi debitis",
       labelButton: 'Add Admin'
@@ -44,6 +53,7 @@ export class AdminComponent {
   ]
 
   navigation(id: number){
+    this.messageService.add({ severity: 'info', detail: 'Logged in Successfully!!' });
     console.log(id);
     switch (id) {
       case 1:

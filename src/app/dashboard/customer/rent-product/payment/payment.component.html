@@ -167,7 +167,7 @@
         <h1>Order Summary</h1>
         <h1 class="fs-4 text-primary mt-2">{{ product.name }}</h1>
         <hr />
-        <p class="fs-5">Duration of rent: {{ totalDays }} days</p>
+        <p class="fs-5">Duration of rent: {{ isExtend ? totalDays - 1 : totalDays }} days</p>
         <p class="fs-5" *ngIf="!isExtend">Rent: ₹ {{ product.rent }} per day</p>
         <p class="fs-5" *ngIf="isExtend">Rent: ₹ {{rentForExtend}} per day</p>
 

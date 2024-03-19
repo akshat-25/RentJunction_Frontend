@@ -14,7 +14,7 @@ export class CustomerComponent {
       header: 'Browse Product By Categories',
       subheader: 'Unlock Earnings with Your Stuff!',
       image: 'https://img.freepik.com/premium-vector/girl-doing-online-shopping-by-smartphone_701961-2321.jpg?w=996',
-      description: "Got cool items collecting dust? Time to cash in! Introducing our 'Add Product for Rent' feature – your gateway to effortless earnings. List your items, set your terms, and let others experience what you have to offer. It's quick, easy, and the best way to make your belongings work for you. Start sharing the joy (and your items) today!",
+      description: "Got cool items collecting dust? Time to cash in! Introducing our 'Add Product for Rent' feature – your gateway to effortless earnings. List your items, set your terms, and let others experience what you have to offer. It's quick, easy, and the best way to make your belongings work for you.",
       labelButton: 'Browse Categories'
     },
 

@@ -1,4 +1,4 @@
-<div class="categories-container" *ngIf="type==='categories'">
+<div class="categories-container mt-7 py-7" *ngIf="type==='categories'">
     <div *ngFor="let category of categories" class="category-card" >
       <img [src]="category.image" alt="{{category.name}}" (click)="onCategorySelect(category.id)" />
       <div class="category-name">{{category.name}}</div>

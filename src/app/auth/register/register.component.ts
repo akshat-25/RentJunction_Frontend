@@ -63,8 +63,8 @@ export class RegisterComponent {
 
       },
       error: (errMsg) => {
+        this.messageService.add({ severity: 'error', detail: errMsg });
         this.isLoading = false;
-        this.errorMessage = errMsg;
         this.hideSnackbar();
       },
     });

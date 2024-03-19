@@ -1,11 +1,4 @@
-:host ::ng-deep .p-card { 
-	border-radius: 25px !important; 
-	width: 500px; 
-	height: 100%;
-	border: 2px solid black; 
-	display: flex;
-	flex-direction: column;
-} 
+
 :host ::ng-deep .p-card-header { 
 	border-radius: 25px 25px 0px 0px !important; 
 	color: white; 
@@ -15,7 +8,7 @@
 	padding: 10px; 
 } 
 :host ::ng-deep .p-card .p-card-subtitle { 
-	color: black !important; 
+	color: black !important;    
 } 
 :host ::ng-deep .p-card .p-card-content { 
 	flex-grow: 1;
@@ -31,13 +24,6 @@
 	margin-right: 5px; 
 }
 
-.container {
-    display: flex;
-	align-items: stretch;
-    justify-content: space-around;
-    flex-direction: row;	
-}
-
 :host ::ng-deep .p-card .image-container {
     height: 300px; 
     overflow: hidden; 
@@ -49,3 +35,45 @@
     width: 100%;
     height: 100%;
 }
+
+.my-container{
+    margin-top: 60px;
+    margin-bottom: 3px; 
+} 
+
+:host ::ng-deep .p-card {
+    border-radius: 25px !important;
+    width: 100%; 
+    max-width: 420px; 
+    height: 100%;
+    border: 2px solid black;
+    display: flex;
+    margin: 10px;
+    flex-direction: column;
+}
+
+.container {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+:host ::ng-deep .p-card {
+    margin: 10px 5px;
+}
+
+@media only screen and (max-width: 767px) {
+    :host ::ng-deep .p-card {
+        max-width: none;
+      
+    }
+}
+
+.description-container{
+	height: 300px;
+	margin-top: 10px;
+}
+
+  

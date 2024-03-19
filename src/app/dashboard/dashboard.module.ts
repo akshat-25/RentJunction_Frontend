@@ -109,11 +109,12 @@ import { RentalsComponent } from './customer/rentals/rentals.component';
 import { ExtendRentComponent } from './customer/rentals/extend-rent/extend-rent.component';
 import { AdminComponent } from './admin/admin.component';
 import { CustomerDetailsComponent } from './admin/customer-details/customer-details.component';
+import { canActivate } from '../utility/authguard';
 
 const routes: Routes = [
   {
     path: 'customer', children: [
-      {path: 'rentals', component: RentalsComponent},
+      {path: 'rentals', component: RentalsComponent,},
       {path: 'rentals/extend-rent/:id', component: ExtendRentComponent},
       {path: '', component: CustomerComponent},
       {path: 'extend-rent/:id/checkout', component: PaymentComponent},
@@ -128,7 +129,7 @@ const routes: Routes = [
         {path: ':name', component: CategoryComponent}
       ]},
       
-   
+      
     ]
   },
 

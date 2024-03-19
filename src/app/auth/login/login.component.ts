@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-login',
@@ -13,8 +14,11 @@ export class LoginComponent {
   isLoading: boolean = false;
   errorMessage: string | null = null;
   router: Router = inject(Router);
+  constructor(private messageService: MessageService) {}
+
 
   onFormSubmitted(form: NgForm) {
+    
     this.isLoading = true;
     const credentials = {
       username: form.value.userName,
@@ -41,16 +45,12 @@ export class LoginComponent {
       error: (errMsg) => {
         this.isLoading = false;
         this.errorMessage = errMsg;
-        this.hideSnackBar();
+        this.messageService.add({ severity: 'error', detail: 'Invalid Username or Password' });
       },
     });
     form.reset();
   }
 
-  hideSnackBar() {
-    setTimeout(() => {
-      this.errorMessage = null;
-    }, 3000);
-  }
+  
 }
 

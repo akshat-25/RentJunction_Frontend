@@ -12,12 +12,13 @@ export class CustomerDetailsComponent implements OnInit{
   userService: UserService = inject(UserService);
   activatedRoute: ActivatedRoute = inject(ActivatedRoute);
   users: any[];
+  query: string;
   constructor(private confirmationService: ConfirmationService, private messageService: MessageService) {}
   ngOnInit() {
     
-    const query = this.activatedRoute.snapshot.params['type'];
+     this.query = this.activatedRoute.snapshot.params['type'];
     
-    if(query === 'customers'){
+    if(this.query === 'customers'){
       this.userService.getCustomers();
       this.userService.users.subscribe((users) => {
         this.users = users;

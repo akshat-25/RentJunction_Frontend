@@ -127,7 +127,9 @@ export class ProductService{
 
 
     getRentals(){
-        return this.http.get(`https://localhost:44375/api/Product/GetRentals/${this.authService.userId}`).pipe(
+      let userId: number = this.authService.getCookies();
+      
+        return this.http.get(`https://localhost:44375/api/Product/GetRentals/${userId}`).pipe(
             catchError((err: HttpErrorResponse) => {
                 console.log(err);
               return throwError(() => err.error.Message);

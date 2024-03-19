@@ -2,7 +2,8 @@ import { Component, OnChanges, OnInit, inject } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { User } from '../models/user';
 import { Subscription } from 'rxjs';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-header',
@@ -11,15 +12,27 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit{
   authService: AuthService = inject(AuthService);
+  cookieService: CookieService = inject(CookieService);
   router: Router = inject(Router);
   isLoggedIn: boolean = false;
   private _userSubject: Subscription
   currentUser: string = '';
+  userId: number;
 
   ngOnInit() {
-    this._userSubject = this.authService.userSubject.subscribe((user: User) => {
-      this.isLoggedIn = user ? true : false
+
+    this._userSubject = this.authService.userSubject.subscribe((user) => {
+      if(!this.isLoggedIn){
+        this.isLoggedIn = !!user;
+      }
     });
+
+    if(+this.authService.getCookies() !== 0){
+      console.log(this.authService.getCookies())
+      this.isLoggedIn = true;
+    }
+    console.log(this.isLoggedIn);
+
   }
 
   ngOnDestroy() {
@@ -27,7 +40,9 @@ export class HeaderComponent implements OnInit{
   }
 
   logout(){
-    this.authService.logout()
+    this.isLoggedIn = false;
+    this.cookieService.delete('userId');
+    this.authService.logout();
   }
 
   navigateDashboard(){

@@ -1,34 +1,37 @@
 <p-confirmDialog></p-confirmDialog>
 <p-toast></p-toast>
-<p-table [value]="users" [tableStyle]="{'min-width': '60rem', 'padding': '10px',}">
-    <ng-template pTemplate="caption">
-        <div class="flex align-items-center justify-content-between">
-            Products
-        </div>
-    </ng-template>
-    <ng-template pTemplate="header" >
-        <tr class="border border-secondary">
-            <th>ID</th>
-            <th>Full Name</th>
-            <th>Email</th>
-            <th>Phone Number</th>
-            <th>Username</th>
-            <th>City</th>
-            <th>Action</th>
-        </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-user >
-        <tr class="border border-secondary" >
-            <td>{{user.id}}</td>
-            <td>{{user.firstName + " " + user.lastName}}</td>
-            <td>{{user.email}}</td>
-            <td>{{user.phoneNumber}}</td>
-            <td>{{user.userName}}</td>
-            <td>{{user.city}}</td>
-            <td>
-                 <button (click)="confirm2($event,user.id)" class="btn btn-danger mx-2">Delete</button>
-            </td>
-        </tr>
-    </ng-template>
-</p-table>
+
+<div class="container mt-4">
+    <p-table [value]="users" [tableStyle]="{'min-width': '60rem', 'padding': '10px',}">
+        <ng-template pTemplate="caption">
+            <div class="flex align-items-center justify-content-between">
+                {{query.toUpperCase()}}
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header" >
+            <tr class="border border-secondary">
+                <th class="border">ID</th>
+                <th class="border">FULL NAME</th>
+                <th class="border">EMAIL</th>
+                <th class="border">PHONE NUMBER</th>
+                <th class="border">USERNAME</th>
+                <th class="border">CITY</th>
+                <th class="border">ACTION</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-user >
+            <tr class="border border-secondary" >
+                <td class="border">{{user.id}}</td>
+                <td class="border">{{user.firstName + " " + user.lastName}}</td>
+                <td class="border">{{user.email}}</td>
+                <td class="border">{{user.phoneNumber}}</td>
+                <td class="border">{{user.userName}}</td>
+                <td class="border">{{user.city}}</td>
+                <td class="border">
+                     <button (click)="confirm2($event,user.id)" class="btn btn-danger mx-2">Delete</button>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
 

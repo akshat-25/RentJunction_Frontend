@@ -21,7 +21,7 @@ export class ViewProductsComponent implements OnInit{
       this.products = prod;
     })
   }
-
+  
   confirm2(event: Event, id: number) {
     this.confirmationService.confirm({
         target: event.target as EventTarget,
@@ -40,7 +40,6 @@ export class ViewProductsComponent implements OnInit{
             });
         },
         reject: () => {
-            this.messageService.add({ severity: 'error', summary: 'Cancelled', detail: 'You have cancelled' });
         }
     });
   }
